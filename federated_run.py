@@ -27,7 +27,11 @@ n = 4
 weights = {'1': 0.25, '2': 0.25, '3': 0.25, '4': 0.25}
 
 # Number of epochs to iterate
-Epochs = 10
+Epochs = 5
+
+print(80*'=')
+print('Federated Test Run')
+print(80*'=')
 
 # Construct on the fly the list of model server URL's
 url_list = []
