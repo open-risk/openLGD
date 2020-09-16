@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-# (c) 2019 Open Risk (https://www.openriskmanagement.com)
+# (c) 2019 - 2020 Open Risk (https://www.openriskmanagement.com)
 #
 # openLGD is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of openLGD. This is notwithstanding any licenses of
@@ -12,7 +12,7 @@
 # either express or implied. See the License for the specific language governing permissions and
 # limitations under the License.
 
-""" This module provides a model server that has access to distributed data sources
+""" This module provides a model server that has local access to distributed data sources
 Each server makes three routes available
 1) GET localhost:/          API Root, indicating the server is live
 2) GET localhost:/start     URL to get initial locally estimated parameters (cold start)
@@ -20,10 +20,11 @@ Each server makes three routes available
 """
 
 import json
+import os
+import signal
 from urllib.parse import urlparse
 
-from flask import Flask
-from flask import request
+from flask import Flask, jsonify, request
 
 from lgdModel import lgdModel
 
@@ -60,6 +61,16 @@ def update():
     old_params = json.loads(request.data.decode('utf-8'))
     new_params = update_calculation(old_params)
     return new_params
+
+
+@app.route('/stop', methods=['GET'])
+def stop():
+    sig = getattr(signal, "SIGKILL", signal.SIGTERM)
+    # os.kill(os.getpid(), sig)
+    # os.kill(os.getpid(), signal.SIGINT)
+    func = request.environ.get('werkzeug.server.shutdown')
+    func()
+    return jsonify({"success": True, "message": "Server is shutting down..."})
 
 
 @app.route('/')

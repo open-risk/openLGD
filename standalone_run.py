@@ -20,14 +20,11 @@ It does not interact with model servers but accesses the LGD Module directly
 from lgdModel import lgdModel
 
 # Number of epochs to iterate
-Epochs = 15
+Epochs = 10
 
 # Initial estimate (cold start)
 params = lgdModel(server=1)
 
-print(80*'=')
-print('Standalone Test Run')
-print(80*'=')
 # Loop over the desired number of epochs
 for e in range(Epochs):
     intercept = params['intercept']

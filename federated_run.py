@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-# (c) 2019 Open Risk (https://www.openriskmanagement.com)
+# (c) 2019 - 2020 Open Risk (https://www.openriskmanagement.com)
 #
 # openLGD is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of openLGD. This is notwithstanding any licenses of
@@ -14,29 +14,29 @@
 
 """
 This script illustrates a basic federated estimation workflow
-It assumes a certain configuration of model servers is in place
+NB: It assumes a certain configuration of model servers is in place
 """
 
 import requests
+from ruamel.yaml import YAML
 
+yaml = YAML(typ='safe')  # default, if not specfied, is 'rt' (round-trip)
+config = yaml.load(open('config.yml', 'r'))
+
+hosts = config['hosts']
+# Number of epochs to iterate
+Epochs = config['epochs']
 # Number of participating model servers
-n = 4
+n = config['servers']
 
 # Weights to use in the averaging
-# TODO remove hardwiring, fetch this data shape with controlled API
+# TODO remove hardwiring, fetch the node data shape with controlled API
 weights = {'1': 0.25, '2': 0.25, '3': 0.25, '4': 0.25}
-
-# Number of epochs to iterate
-Epochs = 5
-
-print(80*'=')
-print('Federated Test Run')
-print(80*'=')
 
 # Construct on the fly the list of model server URL's
 url_list = []
 for k in range(n):
-    model_server_url = 'http://127.0.0.1:500' + str(k+1)
+    model_server_url = hosts + str(k + 1)
     url_list.append(model_server_url)
 
 # Check the model server's status
@@ -59,12 +59,12 @@ for k in range(n):
 # Average the estimated parameters
 avg_coef = 0.0
 avg_intercept = 0.0
-for k in range(1,n):
+for k in range(1, n):
     avg_coef += weights[str(k)] * coeffs[str(k)]
     avg_intercept += weights[str(k)] * intercepts[str(k)]
 data = {'intercept': avg_intercept, 'coefficient': avg_coef}
 print('Averaged Estimates: ', data)
-print(80*'=')
+print(80 * '=')
 
 # Loop over the desired number of epochs
 headers = {'Content-Type': 'application/json'}
@@ -92,4 +92,3 @@ for e in range(Epochs):
 
 # print final estimate
 print('Final Estimate: ', data)
-

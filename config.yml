@@ -1,0 +1,4 @@
+---
+hosts: 'http://127.0.0.1:500'
+epochs: 10
+servers: 4
