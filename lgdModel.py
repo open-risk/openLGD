@@ -19,7 +19,33 @@
 """
 
 import pandas as pd
+import requests
 from sklearn import linear_model
+
+def dataSource(server=1, choice=1):
+    # TODO remove file / url path hardwiring
+    if choice == 1:
+        # Load data from local storage
+        Data_Location = './server_dirs/' + str(server) + '/'
+        df = pd.read_csv(Data_Location + 'regression_data.csv')
+        return df
+    elif choice == 2:
+        # Load data from local openNPL database
+        # GET request to appropriate endpoint
+        data_server_url = "http://localhost:800" + str(server) + "/api/npl_data/counterparties"
+        # Returns json object with counterparty catalog
+        # query individual points to get data
+        # convert data to dataframe
+        data_list = []
+        res = requests.get(data_server_url)
+        entries = res.json()
+        for entry in entries:
+            data_url = entry['link']
+            res2 = requests.get(data_url)
+            data = res2.json()
+            data_list.append((data['current_assets'], data['cash_and_cash_equivalent_items']))
+        df = pd.DataFrame(data_list, columns=['X', 'Y'])
+        return df
 
 
 def lgdModel(server=1, intercept=None, coef=None):
@@ -39,10 +65,11 @@ def lgdModel(server=1, intercept=None, coef=None):
     # The server ID
     n = server
 
-    # Load data from local storage
-    # TODO remove hardwiring
-    Data_Location = './server_dirs/' + str(n) + '/'
-    df = pd.read_csv(Data_Location + 'regression_data.csv')
+    # Fetch data
+    # choice = 1 - from local file
+    # choice = 2 - from database via REST API
+
+    df = dataSource(n, 2)
 
     # Extract explanatory and target variables
     X = df[['X']]

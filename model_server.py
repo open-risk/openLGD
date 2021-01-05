@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-# (c) 2019 - 2020 Open Risk (https://www.openriskmanagement.com)
+# (c) 2019 - 2021 Open Risk (https://www.openriskmanagement.com)
 #
 # openLGD is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of openLGD. This is notwithstanding any licenses of
@@ -13,7 +13,8 @@
 # limitations under the License.
 
 """ This module provides a model server that has local access to distributed data sources
-Each server makes three routes available
+
+Each federated model server makes three endpoints available
 1) GET localhost:/          API Root, indicating the server is live
 2) GET localhost:/start     URL to get initial locally estimated parameters (cold start)
 3) POST localhost:/update   URL to post current averaged parameters (warm start)

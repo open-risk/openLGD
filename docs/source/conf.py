@@ -17,12 +17,12 @@ import os
 
 sys.path.insert(0, os.path.abspath('../../'))
 
-__version__ = '0.1.1'
+__version__ = '0.2'
 
 # -- Project information -----------------------------------------------------
 
 project = 'openLGD'
-copyright = '2019, Open Risk'
+copyright = '2019 - 2021, Open Risk'
 author = 'Open Risk'
 
 # The short X.Y version
@@ -177,7 +177,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'openLGD', 'openLGD Documentation',
-     author, 'openLGD', 'One line description of project.',
+     author, 'openLGD', 'Federated Credit Risk Models',
      'Miscellaneous'),
 ]
 

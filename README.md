@@ -1,7 +1,6 @@
 Intro
 =========================
-openLGD is a Python powered library for the statistical estimation of Credit Risk Loss Given Default models. 
-It can be used both as standalone library and in a federated learning context where data remain in distinct (separate) servers
+openLGD is a Python powered library for the statistical estimation of Credit Risk Loss models. It can be used both as standalone library or in a federated learning context where data remain in distinct (separate) servers
 
 ![image](static/federated_models.png)
 
@@ -12,7 +11,7 @@ Key Information
 * Mathematical Documentation: [Open Risk Manual](https://www.openriskmanual.org/wiki/Loss_Given_Default_Models)
 * Development website: [Github](https://github.com/open-risk/openLGD)
 
-**NB: This is an early alpha release. openLGD is still in active development**
+**NB: This is a very early alpha release. openLGD is still in active development**
 
 
 ### Getting started with the demo
