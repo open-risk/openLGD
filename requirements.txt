@@ -3,7 +3,7 @@ certifi==2019.9.11
 cffi==1.14.2
 chardet==3.0.4
 Click==7.0
-cryptography==3.2
+cryptography==3.3.2
 cycler==0.10.0
 Fabric3==1.14.post1
 Flask==1.1.1
