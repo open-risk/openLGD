@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-# (c) 2019 Open Risk (https://www.openriskmanagement.com)
+# (c) 2019 - 2021 Open Risk (https://www.openriskmanagement.com)
 #
 # openLGD is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of openLGD. This is notwithstanding any licenses of
@@ -21,6 +21,7 @@
 import pandas as pd
 import requests
 from sklearn import linear_model
+
 
 def dataSource(server=1, choice=1):
     # TODO remove file / url path hardwiring
