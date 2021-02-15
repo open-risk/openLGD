@@ -45,12 +45,12 @@ The general structure of the simplified API is
 
 ## 2. Federated Demo using openNPL backends
 
-### Spawn a cluster of docker containers each running an openNPL instance. Those are the data backends
-* Fire up a number of flask servers on different xterm shells. 
-* Run the [Spawn Cluster Script](./spawn_cluster.sh)
-* **Note**: The script uses ports 5001-5004. If by any chance you are already using these ports you would need to adapt the script
+### Spawn a cluster of docker containers each running an openNPL instance. Those are the *data backends*
+* Run the [Docker Cluster Script](./docker_cluster.sh)
+* **Note**: The script uses ports 8001-8004. If by any chance you are already using these ports you would need to adapt the script
+* Check that the data backends are operational by pointing your browser to localhost:800X
 
-### Spawn a cluster of model servers
+### Spawn a cluster of *model servers*
 * fab deploy_cluster
 
 ### Run the federated calculation
