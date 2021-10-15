@@ -10,6 +10,7 @@ Key Information
 * License: Apache 2.0
 * Development website: [Github](https://github.com/open-risk/openLGD)
 * Mathematical Docs LGD Models: [Open Risk Manual](https://www.openriskmanual.org/wiki/Loss_Given_Default_Models)
+* Discussion: [Open Risk Commons](https://www.openriskcommons.org/c/openlgd/19)
 
 
 **NB: This is a very early alpha release. openLGD is still in active development**
