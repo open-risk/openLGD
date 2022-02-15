@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-# (c) 2019 - 2021 Open Risk (https://www.openriskmanagement.com)
+# (c) 2019 - 2022 Open Risk (https://www.openriskmanagement.com)
 #
 # openLGD is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of openLGD. This is notwithstanding any licenses of
@@ -21,35 +21,10 @@
 import pandas as pd
 import requests
 from sklearn import linear_model
+from dataSource import dataSource
 
 
-def dataSource(server=1, choice=1):
-    # TODO remove file / url path hardwiring
-    if choice == 1:
-        # Load data from local storage
-        Data_Location = './server_dirs/' + str(server) + '/'
-        df = pd.read_csv(Data_Location + 'regression_data.csv')
-        return df
-    elif choice == 2:
-        # Load data from local openNPL database
-        # GET request to appropriate endpoint
-        data_server_url = "http://localhost:800" + str(server) + "/api/npl_data/counterparties"
-        # Returns json object with counterparty catalog
-        # query individual points to get data
-        # convert data to dataframe
-        data_list = []
-        res = requests.get(data_server_url)
-        entries = res.json()
-        for entry in entries:
-            data_url = entry['link']
-            res2 = requests.get(data_url)
-            data = res2.json()
-            data_list.append((data['current_assets'], data['cash_and_cash_equivalent_items']))
-        df = pd.DataFrame(data_list, columns=['X', 'Y'])
-        return df
-
-
-def lgdModel(server=1, intercept=None, coef=None):
+def lgdModel(server=1, choice=1, intercept=None, coef=None):
     """ Iterate a generalized linear model
 
     :param server: the id of the server
@@ -61,16 +36,17 @@ def lgdModel(server=1, intercept=None, coef=None):
 
     """
 
+    # A linear LGD model to be estimated iteratively
     clf = linear_model.SGDRegressor(tol=None, max_iter=1, verbose=0, warm_start=False,
                                     early_stopping=False)
     # The server ID
     n = server
 
-    # Fetch data
+    # Fetch data from datasource
     # choice = 1 - from local file
     # choice = 2 - from database via REST API
 
-    df = dataSource(n, 2)
+    df = dataSource(n, choice)
 
     # Extract explanatory and target variables
     X = df[['X']]

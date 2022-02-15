@@ -2,6 +2,10 @@ ChangeLog
 ===========================
 PLEASE NOTE THAT THE OPENLGD API IS STILL VERY UNSTABLE AS MORE USE CASES / FEATURES ARE ADDED REGULARLY
 
+v0.3
+----------------
+
+
 v0.2
 -----------------
 * introduce dataSource object to provide an abstract way to source federated data (files, db's etc)

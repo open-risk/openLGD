@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-# (c) 2019 - 2021 Open Risk (https://www.openriskmanagement.com)
+# (c) 2019 - 2022 Open Risk (https://www.openriskmanagement.com)
 #
 # openLGD is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of openLGD. This is notwithstanding any licenses of
@@ -23,11 +23,11 @@ from lgdModel import lgdModel
 Epochs = 10
 
 # Initial estimate (cold start)
-params = lgdModel(server=1)
+params = lgdModel(server=1, choice=1)
 
 # Loop over the desired number of epochs
 for e in range(Epochs):
     intercept = params['intercept']
     coef = params['coefficient']
-    params = lgdModel(server=1, intercept=intercept, coef=coef)
+    params = lgdModel(server=1, choice=1, intercept=intercept, coef=coef)
     print('Epoch: ', e, params)
