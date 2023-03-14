@@ -21,7 +21,6 @@ Each federated model server makes three endpoints available
 """
 
 import json
-import os
 import signal
 from urllib.parse import urlparse
 

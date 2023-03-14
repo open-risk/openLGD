@@ -18,9 +18,8 @@
 
 """
 
-import pandas as pd
-import requests
 from sklearn import linear_model
+
 from dataSource import dataSource
 
 
