@@ -12,7 +12,7 @@
 # either express or implied. See the License for the specific language governing permissions and
 # limitations under the License.
 
-from fabric.api import local, parallel
+from fabric.api import local
 from fabric.context_managers import shell_env
 from ruamel.yaml import YAML
 

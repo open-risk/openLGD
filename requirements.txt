@@ -1,4 +1,4 @@
-Fabric3
+fabric
 Flask
 numpy
 pandas
