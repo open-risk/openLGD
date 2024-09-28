@@ -2,9 +2,6 @@ ChangeLog
 ===========================
 PLEASE NOTE THAT THE OPENLGD API IS STILL VERY UNSTABLE AS MORE USE CASES / FEATURES ARE ADDED REGULARLY
 
-v0.3
-----------------
-
 
 v0.2
 -----------------

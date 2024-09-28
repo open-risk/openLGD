@@ -22,14 +22,13 @@ __version__ = '0.2'
 # -- Project information -----------------------------------------------------
 
 project = 'openLGD'
-copyright = '2019 - 2021, Open Risk'
+copyright = '2019 - 2024, Open Risk'
 author = 'Open Risk'
 
 # The short X.Y version
 version = ''
 # The full version, including alpha/beta/rc tags
 release = __version__
-
 
 # -- General configuration ---------------------------------------------------
 
@@ -56,9 +55,8 @@ templates_path = ['_templates']
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
-#
-# source_suffix = ['.rst', '.md']
-source_suffix = '.rst'
+
+source_suffix = {'.rst': 'restructuredtext'}
 
 # The master toctree document.
 master_doc = 'index'
@@ -77,7 +75,6 @@ exclude_patterns = []
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
-
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -108,7 +105,6 @@ html_theme_options = {
     'titles_only': False
 }
 
-
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
@@ -129,7 +125,6 @@ html_static_path = ['_static']
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'openLGDdoc'
-
 
 # -- Options for LaTeX output ------------------------------------------------
 
@@ -159,7 +154,6 @@ latex_documents = [
      'Open Risk', 'manual'),
 ]
 
-
 # -- Options for manual page output ------------------------------------------
 
 # One entry per manual page. List of tuples
@@ -168,7 +162,6 @@ man_pages = [
     (master_doc, 'openlgd', 'openLGD Documentation',
      [author], 1)
 ]
-
 
 # -- Options for Texinfo output ----------------------------------------------
 
@@ -181,11 +174,10 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
-
 # -- Extension configuration -------------------------------------------------
 
 extensions.append('sphinx.ext.todo')
-todo_include_todos=True
+todo_include_todos = True
 
 # extensions.append('sphinx_automodapi.automodapi')
 # numpydoc_show_class_members = False
