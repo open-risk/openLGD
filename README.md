@@ -12,11 +12,11 @@ Key Information
 * Author: [Open Risk](http://www.openriskmanagement.com)
 * License: Apache 2.0
 * Development website: [Github](https://github.com/open-risk/openLGD)
-* Mathematical Documentation around LGD Models: [Open Risk Manual](https://www.openriskmanual.org/wiki/Loss_Given_Default_Models)
+* Mathematical Documentation of LGD Models: [Open Risk Manual](https://www.openriskmanual.org/wiki/Loss_Given_Default_Models)
 * Discussion: [Open Risk Commons](https://www.openriskcommons.org/c/openlgd/19)
 
 
-**NB: This is a very early alpha release. openLGD is still in active development**
+**NB: This is an early alpha release. openLGD is still in active development**
 
 ## Standalone Mode
 The standalone mode is illustrated via the script standalone_run.py
@@ -41,6 +41,7 @@ Going forward we'll use fabric and yaml to ease deployment. Check [Fabfile](./fa
 The complete dependency list in the [requirements file](./requirements.txt)  
 
 #### Startup of the model servers:
+
 The demo Model Servers are python/flask based servers
 - The model servers should start up on ports http://127.0.0.1:500X/ where X is the serial number
 - You can check the server is live by pointing your browser to the port
@@ -53,5 +54,7 @@ The general structure of the simplified API is
 * GET http://127.0.0.1:500X/start     URL to get initial locally estimated parameters (cold start)
 * POST http://127.0.0.1:500X/update   URL to post current averaged parameters (warm start) 
 
-## See Also
+## Further Reading
 
+* [White Paper: Federated Credit Systems, Part I: Unbundling The Credit Provision Business Model](https://www.openriskmanagement.com/white_paper_federated_credit_part_i_systems_unbundling_the_credit_provision_business_model/)
+* [White Paper: Federated Credit Systems, Part II: Techniques for Federated Data Analysis](https://www.openriskmanagement.com/white_paper_federated_credit_systems_part_ii_techniques_for_federated_data_analysis/)
