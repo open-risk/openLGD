@@ -11,8 +11,10 @@
 # limitations under the License.
 
 """
+
 This script illustrates a basic federated estimation workflow
 NB: It assumes a certain configuration of model servers is in place
+
 """
 
 import requests

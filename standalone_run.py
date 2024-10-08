@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 # (c) 2019 - 2024 Open Risk (https://www.openriskmanagement.com)
 #
 # openLGD is licensed under the Apache 2.0 license a copy of which is included
@@ -13,8 +11,10 @@
 # limitations under the License.
 
 """
+
 This script illustrates a basic standalone LGD model estimation workflow
 It does not interact with model servers but accesses the LGD Module directly
+
 """
 
 from lgdModel import lgdModel
