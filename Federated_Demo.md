@@ -92,13 +92,17 @@ Check that the data backends are operational by pointing your browser to localho
 
 ### Spawn a cluster of *model servers*
 
-fab deploy_cluster
+```bash
+fab deploycluster
+```
 
 ### Run the federated calculation
+
 * Run the [federated_run](./federated_run.py) script to perform the federated estimation calculation. If all goes well you should get the following screenshot
 
 ### Clean Up
-* fab stop_cluster
+
+* fab stopcluster
 * docker stop $(docker ps -a -q)
 
   

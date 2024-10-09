@@ -12,31 +12,39 @@
 # either express or implied. See the License for the specific language governing permissions and
 # limitations under the License.
 
-from fabric.api import local
-from fabric.context_managers import shell_env
+from fabric import task
 from ruamel.yaml import YAML
 
-yaml = YAML(typ='safe')  # default, if not specfied, is 'rt' (round-trip)
+yaml = YAML(typ='safe')  # default, if not specified, is 'rt' (round-trip)
 config = yaml.load(open('config.yml', 'r'))
 n = config['servers']
 
 
-def deploy_single():
-    with shell_env(FLASK_APP='model_server.py', FLASK_ENV='development'):
-        local('flask run --host 127.0.0.1 --port 5000')
+@task
+def hello(ctx):
+    print("Hello Federated Risk Models")
 
 
-def stop_single():
-    local('curl localhost:5000/stop')
+@task
+def deploysingle(ctx):
+    ctx.config.run.env = {'FLASK_APP': 'model_server.py', 'FLASK_ENV': 'development'}
+    ctx.run('flask run --host 127.0.0.1 --port 5000')
 
 
-def deploy_cluster():
-    with shell_env(FLASK_APP='model_server.py', FLASK_ENV='development'):
-        for i in range(n):
-            # local('flask run --host 127.0.0.1 --port 500' + str(i + 1))
-            local('/bin/bash ./spawn_server.sh 500' + str(i + 1) + ' &')
+@task
+def stopsingle(ctx):
+    ctx.run('curl localhost:5000/stop')
 
 
-def stop_cluster():
+@task
+def deploycluster(ctx):
     for i in range(n):
-        local('curl 127.0.0.1:500' + str(i + 1) + '/stop')
+        print(i)
+        ctx.config.run.env = {'FLASK_APP': 'model_server.py', 'FLASK_ENV': 'development'}
+        ctx.run('/bin/bash ./spawn_server.sh 500' + str(i + 1) + ' &')
+
+
+@task
+def stopcluster(ctx):
+    for i in range(n):
+        ctx.run('curl 127.0.0.1:500' + str(i + 1) + '/stop')

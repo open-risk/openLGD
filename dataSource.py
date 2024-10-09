@@ -30,11 +30,13 @@ def dataSource(server=1, choice=1):
         return df
     elif choice == 2:
         # Load data from local openNPL database
-        # GET request to appropriate endpoint
+        # GET request to the appropriate endpoint (parametrized)
         data_server_url = "http://localhost:800" + str(server) + "/api/npl_data/counterparties"
-        # Returns json object with counterparty catalog
-        # query individual points to get data
-        # convert data to dataframe
+
+        # Request returns json objects with counterparty catalog
+        # We query individual points to get data
+        # We convert the data to dataframe
+
         data_list = []
         res = requests.get(data_server_url)
         entries = res.json()
