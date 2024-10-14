@@ -1,13 +1,12 @@
-Intro
-=========================
+# openLGD
+
 **openLGD** is a Python powered library for the statistical estimation of **Credit Risk Loss** (Also loss-given-default or LGD) models. 
 
 openLGD can be used both as standalone library or in a federated analysis context where data remain in distinct (separate) servers
 
 ![image](static/federated_models.png)
 
-Key Information
-================
+## Summary Information
 
 * Author: [Open Risk](http://www.openriskmanagement.com)
 * License: Apache 2.0
@@ -18,13 +17,22 @@ Key Information
 
 **NB: This is an early alpha release. openLGD is still in active development**
 
-## Standalone Mode
+## Introduction
+
+openLGD aims to support the development of both expert based and statistical [LGD Models](https://www.openriskmanual.org/wiki/LGD%20Model) 
+
+### Standalone Mode
+
+In *standalone mode* openLGD emulates a classic use case where, e.g., a financial institution or other credit provider aims to develop a risk quantification system on the basis of data it has in its possession.  Use cases for the standalone mode are both as intended (standalone) LGD model framework system and as a validation framework for federated applications.
+
 The standalone mode is illustrated via the script standalone_run.py
 
+### Federated Mode
 
-## Federated Mode
+The federated mode essentially facilitates the development of a *generic* (pooled) LGD model that applies to a wide population (which is assumed homogeneous)
 
-### Getting started with the federated demo
+
+#### Getting started with the federated demo
 
 * Clone the repo in a local linux environment
 * Install the dependencies in a virtual environment
@@ -54,7 +62,7 @@ The general structure of the simplified API is
 * GET http://127.0.0.1:500X/start     URL to get initial locally estimated parameters (cold start)
 * POST http://127.0.0.1:500X/update   URL to post current averaged parameters (warm start) 
 
-## Further Reading
+## White Papers on Federated Risk Analysis
 
 * [White Paper: Federated Credit Systems, Part I: Unbundling The Credit Provision Business Model](https://www.openriskmanagement.com/white_paper_federated_credit_part_i_systems_unbundling_the_credit_provision_business_model/)
 * [White Paper: Federated Credit Systems, Part II: Techniques for Federated Data Analysis](https://www.openriskmanagement.com/white_paper_federated_credit_systems_part_ii_techniques_for_federated_data_analysis/)
