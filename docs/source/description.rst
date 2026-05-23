@@ -1,5 +1,6 @@
 Intro
 =========================
+
 **openLGD** is a Python powered library for the statistical estimation of **Credit Risk Loss** (Also loss-given-default or LGD) models.
 
 openLGD can be used both as standalone library or in a federated analysis context where data remain in distinct (separate) servers

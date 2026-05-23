@@ -1,4 +1,4 @@
-# (c) 2019 - 2024 Open Risk (https://www.openriskmanagement.com)
+# (c) 2019 - 2026 Open Risk (https://www.openriskmanagement.com)
 #
 # openLGD is licensed under the Apache 2.0 license a copy of which is included
 # in the source distribution of openLGD. This is notwithstanding any licenses of
@@ -27,6 +27,8 @@ def lgdModel(server=1, choice=1, intercept=None, coef=None):
 
     :param server: the id of the server
     :type server: integer
+    :param choice: local or remote
+    :type choice: integer
     :param intercept: an intercept parameter
     :type intercept: float
     :param coef: a coefficient

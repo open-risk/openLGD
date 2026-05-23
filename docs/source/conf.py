@@ -22,7 +22,7 @@ __version__ = '0.2'
 # -- Project information -----------------------------------------------------
 
 project = 'openLGD'
-copyright = '2019 - 2024, Open Risk'
+copyright = '2019 - 2026, Open Risk'
 author = 'Open Risk'
 
 # The short X.Y version

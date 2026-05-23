@@ -1,3 +1,4 @@
+requests
 fabric
 Flask
 numpy
