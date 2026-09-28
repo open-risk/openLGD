@@ -31,7 +31,6 @@ The standalone mode is illustrated via the script standalone_run.py
 
 The federated mode essentially facilitates the development of a *generic* (pooled) LGD model that applies to a wide population (which is assumed homogeneous)
 
-
 #### Getting started with the federated demo
 
 * Clone the repo in a local linux environment
